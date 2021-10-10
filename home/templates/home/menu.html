@@ -1,0 +1,51 @@
+
+      {% for product in products %}
+<div class="col-lg-4 col-md-6 special-grid drinks">
+									<div class="gallery-single fix">
+										<img src="{{product.img}}" class="img-fluid" alt="Image">
+										<div class="why-text">
+											<h4 id="{{ product.id }}">{{ product.name}}</h4>
+											<p>{{ product.description}}</p>
+											<h5> {{product.price}}</h5>
+                                            <button onclick="cart_add({{ product.id }})"  class="add-to-cart">
+                                        افزودن به سبد خرید
+                                    </button>
+										</div>
+
+
+									</div>
+								</div>
+{% endfor %}
+<script>
+
+     function cart_add(product_id,count) {
+          const httpRequest = new XMLHttpRequest();
+          httpRequest.onload = function () {
+              if (this.status === 200) {
+                  const result = JSON.parse(this.responseText);
+                  alert(result.message);
+                  switch (result.state) {
+                      case true:
+                          document.getElementById("cart-shop").innerHTML = result.html_template;
+                          break;
+                      case false:
+                          break;
+                  }
+
+
+              }
+              else {
+
+                alert("error")
+              }
+
+          }
+
+
+          httpRequest.open("GET","/products/cart/add/"+product_id);
+          httpRequest.send();
+      }
+</script>
+
+
+

@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block 'title' %} menu{% endblock %}
+{% block 'content' %}
+<body>
+	<!-- Start header -->
+
+	<!-- End header -->
+
+	<!-- Start All Pages -->
+    {% for slider in sliders %}
+	<div class="all-page-title page-breadcrumb" style="background-image:url({{ slider.img }})">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1> {{slider.title}}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+	<!-- End All Pages -->
+
+	<!-- Start Menu -->
+	<div class="menu-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Special Menu</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
+				</div>
+			</div>
+            {% load home_tags %}
+
+            {% product request 2 %}
+
+
+
+		</div>
+	</div>
+	<!-- End Menu -->
+
+
+	<!-- Start Customer Reviews -->
+	<div class="customer-reviews-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Customer Reviews</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8 mr-auto ml-auto text-center">
+					<div id="reviews" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner mt-4">
+                            {% for customers in customer %}
+							<div class="carousel-item text-center active">
+								<div class="img-box p-1 border rounded-circle m-auto">
+									<img class="d-block w-100 rounded-circle" src="{{ customers.img}}" alt="">
+								</div>
+								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">{{ customers.name }}</strong></h5>
+								<h6 class="text-dark m-0">{{ customers.title }}</h6>
+								<p class="m-0 pt-3">{{ customers.text|safe}}.</p>
+							</div>
+							{% endfor %}
+						</div>
+						<a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
+							<i class="fa fa-angle-left" aria-hidden="true"></i>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#reviews" role="button" data-slide="next">
+							<i class="fa fa-angle-right" aria-hidden="true"></i>
+							<span class="sr-only">Next</span>
+						</a>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Customer Reviews -->
+
+	<!-- Start Contact info -->
+	<div class="contact-imfo-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 arrow-right">
+					<i class="fa fa-volume-control-phone"></i>
+					<div class="overflow-hidden">
+						<h4>Phone</h4>
+						<p class="lead">
+							+01 123-456-4590
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4 arrow-right">
+					<i class="fa fa-envelope"></i>
+					<div class="overflow-hidden">
+						<h4>Email</h4>
+						<p class="lead">
+							yourmail@gmail.com
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-map-marker"></i>
+					<div class="overflow-hidden">
+						<h4>Location</h4>
+						<p class="lead">
+							800, Lorem Street, US
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Contact info -->
+
+</body>
+    <script>
+    function myfunc(id){
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+        document.getElementById("mymenu").innerHTML =this.responseText;
+                        }
+        xhttp.open("GET", "/products/"+id);
+         xhttp.send();
+    }
+    </script>
+{% endblock %}

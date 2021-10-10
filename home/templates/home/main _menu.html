@@ -1,0 +1,42 @@
+
+<div class="row inner-menu-box">
+				<div class="col-3">
+					<div class="nav flex-column nav-pills"
+                         id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                        {% for category in categories %}
+                           
+						<a onclick="myfunc('{{ category.id }}')" class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="{{ category.link }}" role="tab" aria-controls="v-pills-home" {% if forloop.first %} aria-selected="true"
+                                                                                                                                                                        {% else %} aria-selected="false"
+                                                                                                                                                                                {% endif %}>{{ category.name }}</a>
+                         {% endfor %}
+
+
+					</div>
+				</div>
+
+				<div class="col-9">
+					<div class="tab-content" id="v-pills-tabContent">
+
+						<div class="tab-pane fade show active" id="{{ categories}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+							<div class="row" id="mymenu">
+                                {% include 'home/menu.html'  %}
+{#                                        {% block 'menu' %}{% endblock %}#}
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+ <script>
+    function myfunc(id){
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+        document.getElementById("mymenu").innerHTML =this.responseText;
+                        }
+        xhttp.open("GET", "/products/"+id);
+         xhttp.send();
+    }
+    </script>

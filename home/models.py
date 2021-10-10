@@ -3,6 +3,9 @@ from ckeditor.fields import RichTextField
 from django.contrib import admin
 from django.contrib.admin.forms import forms
 # Create your models here.
+from django.http import Http404
+
+
 class Slider(models.Model):
     name = models.CharField(max_length=250)
     title = models.CharField(max_length=250)
@@ -30,6 +33,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     name = models.CharField(max_length=250)

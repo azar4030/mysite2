@@ -46,8 +46,8 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+						<li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href=" {% url 'menu' %}">Menu</a></li>
 						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
@@ -65,6 +65,14 @@
 							</div>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+{#                        <li class="nav-item " >#}
+{#                            <a href="" class="nav-link" ><img src="https://img.icons8.com/color/38/000000/shopping-cart-loaded.png"/><span id="cart">0</span></a>#}
+{#                        </li>#}
+                        <li>
+                             <div id="cart-shop" class="user-item cart-list">
+                          {% include 'home/cart.html' with carts=carts total_price=total_price count_cart=count_cart %}
+                        </div>
+                        </li>
 					</ul>
 				</div>
 			</div>
@@ -143,5 +151,6 @@
 	<script src="{% static '' %}assets/js/form-validator.min.js"></script>
     <script src="{% static '' %}assets/js/contact-form-script.js"></script>
     <script src="{% static '' %}assets/js/custom.js"></script>
+    <script src="{% static '' %}assets/js/main.js"></script>
 </body>
 </html>

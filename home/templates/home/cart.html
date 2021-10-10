@@ -1,0 +1,32 @@
+<a href="#">
+  <i class="fal fa-shopping-basket"></i>
+  <span class="bag-items-number">{{ count_cart }}</span>
+</a>
+<ul>
+                                <li class="cart-items">
+                                    <ul class="do-nice-scroll">
+                                     {% for cart in  carts %}
+                                        <li class="cart-item">
+
+                                            <span class="price">{{ cart.price }} تومان</span>
+                                            <button class="remove-item">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+                                        </li>
+                                     {% endfor %}
+
+                                    </ul>
+                                </li>
+                                <li class="cart-footer">
+                                    <span class="d-block text-center mb-3">
+                                        مبلغ کل:
+                                        <span class="total">{{ total_price }} تومان</span>
+                                    </span>
+                                    <span class="d-block text-center px-2">
+                                        <a href="#" class="btn-cart">
+                                            مشاهده سبد خرید
+                                            <i class="mi mi-ShoppingCart"></i>
+                                        </a>
+                                    </span>
+                                </li>
+                            </ul>
