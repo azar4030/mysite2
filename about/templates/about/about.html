@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block 'title' %} about{% endblock %}
+{% block 'content' %}
+<body>
+
+
+	<!-- Start header -->
+    {% for slider in sliders %}
+	<div class="all-page-title page-breadcrumb" style="background-image: url({{ slider.img }})">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>{{ slider.title}}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+	<!-- End header -->
+
+	<!-- Start About -->
+	<div class="about-section-box">
+		<div class="container">
+			<div class="row">
+				<div class="inner-column">
+
+					  {{ abouts.Text|safe }}
+					</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- End About -->
+
+	<!-- Start Menu -->
+	<div class="menu-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Special Menu</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
+				</div>
+			</div>
+
+			  {% load home_tags %}
+
+            {% product request 2 %}
+
+		</div>
+	</div>
+	<!-- End Menu -->
+
+
+</body>
+{% endblock %}

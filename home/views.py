@@ -59,7 +59,7 @@ def cart_add(request, product_id):
                 message = "به سبد خرید اضافه شد"
 
                 total_price = int(price) * int(count)
-                new_cart.append({'count': count, 'price':total_price, 'one_price': price, 'product_id': product_id})
+                new_cart.append({'count': count, 'price': total_price, 'one_price': price, 'product_id': product_id})
 
             request.session['cart'] = new_cart
 
@@ -76,7 +76,6 @@ def cart_add(request, product_id):
     total_price = 0
     if 'cart' in request.session:
         for cart in request.session['cart']:
-
             cart_counter += 1
             total_price += cart['price']
             carts.append(cart)
@@ -87,8 +86,7 @@ def cart_add(request, product_id):
     context = {'carts': carts, 'total_price': total_price, 'cart_counter': cart_counter}
 
     template = render_to_string('home/cart.html', context)
-    return JsonResponse({'message':message,'template':template})
-
+    return JsonResponse({'message': message, 'template': template})
 
 
 def show_cart(request):

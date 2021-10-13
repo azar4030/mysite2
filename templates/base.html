@@ -48,29 +48,15 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href=" {% url 'menu' %}">Menu</a></li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="reservation.html">Reservation</a>
-								<a class="dropdown-item" href="stuff.html">Stuff</a>
-								<a class="dropdown-item" href="gallery.html">Gallery</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="blog.html">blog</a>
-								<a class="dropdown-item" href="blog-details.html">blog Single</a>
-							</div>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+
+						<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 {#                        <li class="nav-item " >#}
 {#                            <a href="" class="nav-link" ><img src="https://img.icons8.com/color/38/000000/shopping-cart-loaded.png"/><span id="cart">0</span></a>#}
 {#                        </li>#}
                         <li>
                              <div id="cart-shop" class="user-item cart-list">
-                          {% include 'home/cart.html' with carts=carts total_price=total_price count_cart=count_cart %}
+                          {% include 'home/cart.html' with carts=carts total_price=total_price cart_counter=cart_counter %}
                         </div>
                         </li>
 					</ul>
